@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://tbtotNghiepBrowse.caption"
+        focusComponent="tbtotNghiepsTable">
+    <data readOnly="true">
+        <collection id="tbtotNghiepsDc"
+                    class="com.quanlikhaibaoo.entity.TbtotNghiep">
+            <fetchPlan extends="_base">
+                <property name="maNganh"/>
+                <property name="maTruong"/>
+                <property name="soCMND"/>
+            </fetchPlan>
+            <loader id="tbtotNghiepsDl">
+                <query>
+                    <![CDATA[select e from TbtotNghiep e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tbtotNghiepsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="tbtotNghiepsDl">
+            <properties include=".*"/>
+        </filter>
+        <table id="tbtotNghiepsTable"
+               width="100%"
+               dataContainer="tbtotNghiepsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="heTN"/>
+                <column id="loaiTN"/>
+                <column id="maNganh"/>
+                <column id="maTruong"/>
+                <column id="ngayTN"/>
+                <column id="soCMND"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tbtotNghiepsTable.create"/>
+                <button id="editBtn" action="tbtotNghiepsTable.edit"/>
+                <button id="removeBtn" action="tbtotNghiepsTable.remove"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

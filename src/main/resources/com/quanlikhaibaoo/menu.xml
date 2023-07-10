@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+
+    <menu id="application" caption="msg://com.quanlikhaibaoo/menu.application" insertBefore="administration">
+        <item screen="User.browse" caption="msg://com.quanlikhaibaoo.screen.user/UserBrowse.caption"/>
+        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+        <item screen="TbtotNghiep.browse" caption="msg://com.quanlikhaibaoo.screen.tbtotnghiep/tbtotNghiepBrowse.menu"/>
+        <item screen="Tbtruong.browse" caption="msg://com.quanlikhaibaoo.screen.tbtruong/tbtruongBrowse.menu"/>
+        <item screen="TbcongViec.browse" caption="msg://com.quanlikhaibaoo.screen.tbcongviec/tbcongViecBrowse.menu"/>
+        <item screen="Tbnganh.browse" caption="msg://com.quanlikhaibaoo.screen.tbnganh/tbnganhBrowse.menu"/>
+        <item screen="Tbsinhvien.browse" caption="msg://com.quanlikhaibaoo.screen.tbsinhvien/tbsinhvienBrowse.menu"/>
+    </menu>
+
+    <menu id="khaibao" caption="Khai Báo" insertAfter="application">
+        <item screen="khaiBao.Browse" caption="Khai Báo"/>
+    </menu>
+
+    <menu id="quanLyThongTinKhaiBao" caption="Quản Lý Thông Tin Khai Báo" insertAfter="khaibao">
+        <item screen="QuanLyKhaiBao.browse" caption="Quản Lí Khai Báo"/>
+    </menu>
+
+</menu-config>

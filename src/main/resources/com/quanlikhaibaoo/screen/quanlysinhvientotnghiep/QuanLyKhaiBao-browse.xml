@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://quanLyKhaiBaoBrowse.caption"
+        focusComponent="tbtotNghiepsTable">
+    <data readOnly="true">
+        <collection id="tbtotNghiepsDc"
+                    class="com.quanlikhaibaoo.entity.TbtotNghiep">
+            <fetchPlan extends="_base">
+                <property name="maNganh" fetchPlan="_base"/>
+                <property name="maTruong" fetchPlan="_base"/>
+                <property name="soCMND" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="tbtotNghiepsDl">
+                <query>
+                    <![CDATA[select e from TbtotNghiep e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tbtotNghiepsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="tbtotNghiepsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="tbtotNghiepsTable"
+                    width="100%"
+                    dataContainer="tbtotNghiepsDc">
+            <actions>
+                <action id="edit" type="edit">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                        <property name="screenClass" value="com.quanlikhaibaoo.screen.QuanLySinhVienTotNghiep.QuanLyKhaiBaoEdit"/>
+                    </properties>
+                </action>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="soCMND.id" caption="Số CMND"/>
+                <column id="soCMND.hoTen" caption="Họ Tên"/>
+                <column id="soCMND.soDt" caption="Số Điện Thoại"/>
+                <column id="maNganh.id" caption="Mã Ngành"/>
+                <column id="maNganh.tenNganh" caption="Tên Ngành"/>
+                <column id="maTruong.id" caption="Mã Trường"/>
+                <column id="maTruong.tenTruong" caption="Tên Trường"/>
+                <column id="heTN"/>
+                <column id="loaiTN"/>
+                <column id="ngayTN"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" icon="CREATE_ACTION" primary="true" caption="Create"/>
+                <button id="editBtn" action="tbtotNghiepsTable.edit"/>
+                <button id="removeBtn" action="tbtotNghiepsTable.remove"/>
+                <fileStorageUpload id="fileField"
+                                   fileStoragePutMode="MANUAL"
+                                   property="excel"
+                                   dropZone="lookupActions"
+                                   pasteZone="lookupActions"
+                                   permittedExtensions = ".xlsx"
+                                   accept="*.xlsx"
+                                   dropZonePrompt="Drop your file here"
+                                   uploadButtonIcon="EXCEL_ACTION"
+                                   uploadButtonCaption="Upload Excel"/>
+                <button id="exportExcelFile" caption="Export Excel" icon="UPLOAD"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

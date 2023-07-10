@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="Form Khai Báo"
+        focusComponent="form">
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form">
+            <column width="350px">
+                <textField datatype="int" id="soCMND" caption="Số CMND" property="soCMND"/>
+                <textField id="hoTen" caption="Họ Tên" property="hoTen"/>
+                <textField id="email" caption="Email" property="email"/>
+                <textField id="soDt" caption="Số Điện Thoại" property="soDt"/>
+                <textField id="diaChi" caption="Địa Chỉ" property="diaChi"/>
+                <comboBox id="truong" caption="Tên Trường" property="truong"/>
+                <comboBox id="nganh" caption="tên Ngành" property="nganh"/>
+                <textField id="heTN" caption="Hệ Tốt Nghiệp" property="heTN"/>
+                <textField id="loaiTN" caption="Loại Tốt Nghiệp" property="loaiTN"/>
+                <dateField id="ngayTN" resolution="DAY" caption="Ngày Tốt Nghiệp" property="ngayTN"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="saveBtn" caption="OK" icon="EDITOR_OK" primary="true"/>
+            <button id="closeBtn" caption="Close" icon="EDITOR_CANCEL"/>
+        </hbox>
+    </layout>
+</window>
